@@ -1,8 +1,7 @@
-## Put comments here that give an overall description of what your
-## functions do
+## makecachematrix creates an object from an input matrix which may contain and store the inverse of that matrix, so as to cache this information in case of repeated accesses to it in future.
+## cachesolve will return the inverse of a matrix, solving for it mathematically IFF it has not already done so, or extracting the cached solution otherwise.
 
-## Write a short comment describing this function
-
+## Make a matrix object which can contain a stored cache of its inverse
 makecachematrix <- function(x = numeric()) {
   m <- NULL
   set <- function(y) {
@@ -16,9 +15,9 @@ makecachematrix <- function(x = numeric()) {
        setsolve = setsolve,
        getsolve = getsolve)
 }
+## Return a matrix that is the inverse of 'x'
 cachesolve <- function(x, ...) {
   
-  ## Return a matrix that is the inverse of 'x'
   m <- x$getsolve()
   if(!is.null(m)) {
     message("getting cached data")
